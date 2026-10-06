@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#8fe8ff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>NEXA OPTIMIZER V2</title>
+<link rel="manifest" href="#manifest">
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,Arial,sans-serif;background:#071015;color:#f5fbff}
+body{background:radial-gradient(circle at 80% -10%,#164452 0,#071015 36%,#05090c 100%)}
+button{font:inherit;cursor:pointer;border:0}.app{max-width:520px;margin:auto;min-height:100vh;padding:18px 16px 100px}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}.brand{display:flex;gap:10px;align-items:center}
+.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(145deg,#c7f7ff,#55cde9);display:grid;place-items:center;color:#041016;font-weight:1000;box-shadow:0 0 28px #58d7ee55}
+.brand b{font-size:18px;letter-spacing:1px}.brand small{display:block;color:#7f9aa3;margin-top:2px}
+.status{font-size:11px;color:#a7dce7;border:1px solid #70dff044;padding:7px 9px;border-radius:999px;background:#79defb0c}
+.card{background:linear-gradient(145deg,#0d1c22dd,#091318dd);border:1px solid #8de8ff18;border-radius:24px;padding:18px;margin-bottom:14px;box-shadow:0 18px 50px #0005}
+.hero{padding:22px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:#6ce4ff18;right:-70px;top:-70px}
+.kicker{font-size:11px;color:#79e1f5;font-weight:800;letter-spacing:1.5px}.hero h1{font-size:30px;line-height:1.02;margin:8px 0}.hero p{color:#94aab2;font-size:13px;line-height:1.5;margin:0 0 18px}
+.primary{width:100%;padding:15px;border-radius:15px;background:linear-gradient(100deg,#bff7ff,#61d7ee);color:#031015;font-weight:950;box-shadow:0 10px 30px #5cdcf044}
+.secondary{padding:12px 14px;border-radius:13px;background:#ffffff08;color:#dffaff;border:1px solid #ffffff12;font-weight:800}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.metric{padding:15px;border-radius:18px;background:#ffffff06;border:1px solid #ffffff0b}.metric small{color:#71858d}.metric b{display:block;font-size:23px;margin-top:5px}.good{color:#83eaff}
+.device{display:flex;justify-content:space-between;align-items:center}.device strong{font-size:17px}.device p{margin:4px 0 0;color:#8299a2;font-size:12px}
+.dot{width:10px;height:10px;border-radius:50%;background:#71e5fa;box-shadow:0 0 14px #71e5fa}
+.section-title{display:flex;justify-content:space-between;align-items:center;margin:20px 2px 10px}.section-title b{font-size:15px}.section-title span{font-size:11px;color:#6f8c95}
+.game{display:flex;align-items:center;gap:12px;padding:13px;border-radius:18px;background:#ffffff06;border:1px solid #ffffff0b;margin-bottom:9px}.gameicon{width:48px;height:48px;border-radius:14px;background:linear-gradient(145deg,#1a3d49,#0e2028);display:grid;place-items:center;font-size:21px}.gameinfo{flex:1}.gameinfo b{font-size:14px}.gameinfo small{display:block;color:#7f969e;margin-top:4px}.play{padding:9px 11px;border-radius:11px;background:#b9f4ff;color:#031015;font-weight:900;font-size:11px}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.action{padding:16px;border-radius:19px;text-align:left;background:#ffffff06;border:1px solid #ffffff0d;color:#fff}.action span{font-size:21px}.action b{display:block;margin-top:9px}.action small{display:block;color:#789099;margin-top:5px;line-height:1.35}
+.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);padding:10px 15px 14px;background:#060b0fe8;backdrop-filter:blur(18px);border-top:1px solid #ffffff0d;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.nav{background:none;color:#6f8991;font-size:10px;padding:5px}.nav.active{color:#b9f5ff}.nav span{display:block;font-size:18px;margin-bottom:3px}
+.modal{position:fixed;inset:0;background:#020607cc;backdrop-filter:blur(10px);display:none;align-items:end;justify-content:center;z-index:5}.sheet{width:min(520px,100%);background:#0a151a;border:1px solid #83e7fb22;border-radius:28px 28px 0 0;padding:22px 18px 30px;box-shadow:0 -20px 60px #0008}.sheet h2{margin:0 0 7px}.sheet p{color:#8299a2;font-size:13px;line-height:1.5}.close{float:right;background:#ffffff0b;color:#b8dbe2;border-radius:10px;padding:7px 10px}
+.loader{position:fixed;inset:0;background:#050b0f;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10}.loader .logo{width:74px;height:74px;font-size:25px;margin-bottom:18px}.loader b{font-size:20px}.loader p{color:#789099;font-size:12px}.bar{width:220px;height:4px;background:#ffffff0b;border-radius:9px;overflow:hidden;margin-top:16px}.bar i{display:block;width:40%;height:100%;background:#78e4f8;animation:load 1.2s infinite}@keyframes load{to{transform:translateX(330%)}} 
+@media(min-width:700px){body{padding:20px 0}.app{border:1px solid #ffffff0b;border-radius:30px;background:#071015cc}.bottom{bottom:20px;border-radius:20px}}
+</style>
+</head>
+<body>
+<div class="loader" id="loader"><div class="logo">N</div><b>NEXA OPTIMIZER</b><p id="scan">Detectando seu dispositivo...</p><div class="bar"><i></i></div></div>
+
+<main class="app">
+<header class="top">
+ <div class="brand"><div class="logo">N</div><div><b>NEXA OPTIMIZER</b><small>Adaptive Performance</small></div></div>
+ <div class="status">● ONLINE</div>
+</header>
+
+<section class="card hero">
+ <div class="kicker">PERFIL AUTOMÁTICO</div>
+ <h1>Seu aparelho.<br>Seu melhor desempenho.</h1>
+ <p>A NEXA analisa o dispositivo e monta um perfil adaptativo para cada jogo, priorizando estabilidade e desempenho.</p>
+ <button class="primary" onclick="optimize()">⚡ OTIMIZAR AGORA</button>
+</section>
+
+<section class="card">
+ <div class="device"><div><strong id="deviceName">Detectando aparelho...</strong><p id="os">Analisando sistema</p></div><div class="dot"></div></div>
+ <div class="grid" style="margin-top:14px">
+  <div class="metric"><small>FPS alvo</small><b class="good" id="fps">--</b></div>
+  <div class="metric"><small>Estabilidade</small><b class="good" id="stable">--</b></div>
+  <div class="metric"><small>Temperatura</small><b>38°C</b></div>
+  <div class="metric"><small>Perfil</small><b style="font-size:16px">ADAPTIVE</b></div>
+ </div>
+</section>
+
+<div class="section-title"><b>Meus jogos</b><span id="gameCount">3 jogos</span></div>
+<section class="card">
+ <div class="game"><div class="gameicon">⚔️</div><div class="gameinfo"><b>Mobile Legends</b><small>Perfil: competitivo • 60 FPS</small></div><button class="play" onclick="game('Mobile Legends')">OTIMIZAR</button></div>
+ <div class="game"><div class="gameicon">🔥</div><div class="gameinfo"><b>Free Fire</b><small>Perfil: competitivo • 60 FPS</small></div><button class="play" onclick="game('Free Fire')">OTIMIZAR</button></div>
+ <div class="game"><div class="gameicon">🎯</div><div class="gameinfo"><b>COD Mobile</b><small>Perfil: desempenho • 90 FPS</small></div><button class="play" onclick="game('COD Mobile')">OTIMIZAR</button></div>
+ <button class="secondary" style="width:100%;margin-top:4px" onclick="addGame()">＋ ADICIONAR JOGO</button>
+</section>
+
+<div class="section-title"><b>Optimizer</b><span>Android + iOS</span></div>
+<section class="actions">
+ <button class="action" onclick="phone()"><span>📱</span><b>Otimizar celular</b><small>Configurações e recomendações compatíveis com seu sistema.</small></button>
+ <button class="action" onclick="performance()"><span>📊</span><b>Desempenho</b><small>Veja o perfil adaptativo e a estabilidade do aparelho.</small></button>
+ <button class="action" onclick="ai()"><span>🤖</span><b>NEXA IA</b><small>Entenda o que foi otimizado e como usar.</small></button>
+ <button class="action" onclick="install()"><span>➕</span><b>Tela inicial</b><small>Instale a NEXA como aplicativo quando suportado.</small></button>
+</section>
+</main>
+
+
+<section class="card"><div class="section-title" style="margin:0 0 10px"><b>Central NEXA</b><span>Downloads + vídeos</span></div><div class="actions">
+<button class="action" onclick="downloadFile('ZERO LAG — Otimização Brevent','https://www.mediafire.com/file/pa1q0loocdbzzvw/ZERO+LAG+++OTIMIZA%C3%87%C3%83O+-+BREVENT.zip/file')"><span>⬇️</span><b>ZERO LAG</b><small>Baixar pacote de otimização Brevent.</small></button>
+<button class="action" onclick="downloadFile('GAME BOOSTER — Otimização','https://www.mediafire.com/file/2bhqzudkxdjbdfu/GAME+BOOSTER+++OTIMIZA%C3%87%C3%83O.zip/file')"><span>🚀</span><b>GAME BOOSTER</b><small>Baixar pacote de otimização.</small></button>
+<button class="action" onclick="openVideo('Tutorial NEXA','https://youtu.be/gdIGkB5IQBk?is=nzA2OCz31tJANKYZ')"><span>▶️</span><b>Vídeo tutorial</b><small>Aprenda como usar a otimização.</small></button>
+<button class="action" onclick="openVideo('Vídeo / pacote Game Booster','https://www.mediafire.com/file/2bhqzudkxdjbdfu/GAME+BOOSTER+++OTIMIZA%C3%87%C3%83O.zip/file')"><span>🎬</span><b>Game Booster</b><small>Abrir o material enviado.</small></button></div></section>
+<section class="card"><div class="section-title" style="margin:0 0 10px"><b>🔐 Verificação do aparelho</b><span>Antes de otimizar</span></div><p style="color:#8299a2;font-size:13px;line-height:1.5;margin:0 0 13px">A NEXA mostra as informações que o sistema permite identificar e pede confirmação antes de qualquer permissão. Nenhuma autorização é concedida automaticamente.</p><button class="primary" onclick="verifyDevice()">VERIFICAR E CONFIRMAR APARELHO</button></section>
+
+<nav class="bottom">
+ <button class="nav active"><span>⌂</span>Início</button>
+ <button class="nav" onclick="game('Meus jogos')"><span>🎮</span>Jogos</button>
+ <button class="nav" onclick="phone()"><span>⚙</span>Optimizer</button>
+ <button class="nav" onclick="ai()"><span>✦</span>NEXA IA</button>
+</nav>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()"><div class="sheet"><button class="close" onclick="closeModal()">✕</button><div id="sheet"></div></div></div>
+
+<script>
+const ua=navigator.userAgent;
+let platform=/iPhone|iPad|iPod/i.test(ua)?"iOS":/Android/i.test(ua)?"Android":"Web";
+let model=platform==="Android"?"Android — dispositivo detectado":platform==="iOS"?"iPhone/iPad — dispositivo detectado":"Navegador";
+document.getElementById("deviceName").textContent=model;
+document.getElementById("os").textContent=platform+" • "+(navigator.userAgentData?.platform||navigator.platform||"sistema");
+setTimeout(()=>{document.getElementById("scan").textContent="Criando perfil adaptativo...";},650);
+setTimeout(()=>{document.getElementById("fps").textContent=platform==="Android"?"60 FPS":"60 FPS";document.getElementById("stable").textContent="94%";document.getElementById("loader").style.display="none";},1400);
+
+function openModal(title,body){document.getElementById("sheet").innerHTML="<h2>"+title+"</h2>"+body;document.getElementById("modal").style.display="flex"}
+function closeModal(){document.getElementById("modal").style.display="none"}
+function optimize(){openModal("⚡ Otimização automática","<p>Perfil Adaptive preparado. A NEXA prioriza estabilidade, memória e configurações compatíveis com o sistema.</p><button class='primary' onclick='game(\"Seu jogo\")'>ESCOLHER JOGO</button>")}
+function game(name){openModal("🎮 "+name,"<p>Perfil recomendado: <b>Adaptive FPS</b><br>Meta: maior FPS sustentável pelo aparelho e pelo jogo.<br>Estabilidade estimada: <b>94%</b></p><button class='primary' onclick='optimized()'>⚡ OTIMIZAR JOGO</button><br><br><button class='secondary' style='width:100%' onclick='closeModal()'>MENU OPTIMIZER</button>")}
+function optimized(){openModal("✅ Jogo otimizado","<p>Perfil NEXA aplicado nesta demonstração. Em um app nativo, esta etapa poderá usar as APIs/permissões disponíveis no aparelho.</p><button class='primary' onclick='launch()'>▶ ENTRAR NO JOGO</button>")}
+function launch(){openModal("▶ Entrar no jogo","<p>Em uma versão nativa, a NEXA poderá abrir o jogo quando o sistema permitir.</p><button class='secondary' style='width:100%' onclick='closeModal()'>VOLTAR</button>")}
+function phone(){openModal("📱 Otimizar celular","<p><b>Android:</b> recomendações para Game Mode, bateria, tela, notificações e desempenho, conforme suporte do fabricante.</p><p><b>iOS:</b> recomendações dentro das permissões do sistema, sem tentar alterar configurações bloqueadas pela Apple.</p><button class='primary' onclick='optimize()'>CRIAR PERFIL AUTOMÁTICO</button>")}
+function performance(){openModal("📊 Desempenho","<div class='grid'><div class='metric'><small>FPS alvo</small><b class='good'>60</b></div><div class='metric'><small>Estabilidade</small><b class='good'>94%</b></div></div><p>O alvo é adaptativo. A NEXA não promete 70 FPS em aparelhos que não suportem essa taxa de atualização ou que não consigam sustentá-la.</p>")}
+function ai(){openModal("🤖 NEXA IA","<p>Eu explico o perfil do aparelho, o que pode ser otimizado e quais ajustes são seguros. A NEXA diferencia otimizações reais de recomendações que dependem do sistema.</p>")}
+function addGame(){openModal("＋ Adicionar jogo","<p>Na versão web, você pode cadastrar o jogo manualmente. Em uma versão nativa Android, a NEXA poderá trabalhar com jogos detectáveis pelo sistema. O iOS possui limitações maiores para listar apps instalados.</p><button class='primary' onclick='closeModal()'>ENTENDI</button>")}
+function downloadFile(name,url){openModal("⬇️ "+name,"<p>Você será direcionado para o arquivo hospedado no MediaFire.</p><button class='primary' onclick="window.open('"+url+"','_blank')">ABRIR DOWNLOAD</button>")}
+function openVideo(name,url){openModal("▶️ "+name,"<p>Abra o material em uma nova aba.</p><button class='primary' onclick="window.open('"+url+"','_blank')">ABRIR</button>")}
+function verifyDevice(){openModal("🔐 Confirme seu aparelho","<p><b>Sistema detectado:</b> "+platform+"<br><b>Plataforma:</b> "+(navigator.userAgentData?.platform||navigator.platform||"Sistema")+"<br><b>Tela:</b> "+window.screen.width+" × "+window.screen.height+"</p><p>O nome do proprietário não é disponibilizado de forma confiável por um site. Um app nativo também só poderá usar dados permitidos pelo Android/iOS.</p><p><b>Permissões:</b> o sistema deve mostrar a solicitação e você decide se autoriza.</p><button class='primary' onclick='requestPermissionInfo()'>CONTINUAR</button>")}
+function requestPermissionInfo(){openModal("🛡️ Permissões NEXA","<p>Na versão nativa, a NEXA poderá solicitar apenas permissões necessárias para recursos específicos, explicando cada uma antes da autorização.</p><p>No Android, alguns recursos de jogos dependem do fabricante e do sistema. No iOS, a NEXA fica limitada às APIs e permissões permitidas pela Apple.</p><button class='primary' onclick='game("Meu jogo")'>CONTINUAR PARA O JOGO</button>)}
+function install(){openModal("➕ Colocar na tela inicial","<p>Se o navegador oferecer a opção <b>Adicionar à tela inicial</b> ou <b>Instalar aplicativo</b>, use-a para deixar a NEXA com acesso direto na tela inicial.</p><button class='primary' onclick='closeModal()'>FECHAR</button>")}
+</script>
+</body>
+</html>
